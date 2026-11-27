@@ -1,694 +1,595 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#6557f5">
+<meta name="theme-color" content="#c85a32">
 <meta name="description" content="Mahesh Kunchala — Data Analyst Portfolio">
 <title>Mahesh Kunchala | Data Analyst</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 :root {
-  --bg: #f5f7fc;
-  --card: #ffffff;
-  --text: #111111;
-  --muted: #252525;
-  --accent: #6557f5;
-  --accent2: #12b8c8;
-  --line: #e6eaf2;
-  --shadow: 0 18px 50px rgba(22,34,66,.08);
+  --bg: #f7f4ef;
+  --surface: #ffffff;
+  --surface-alt: #efeae2;
+  --text: #1c1917;
+  --muted: #5c554e;
+  --terracotta: #c85a32;
+  --sage: #2d6a4f;
+  --ochre: #b4690e;
+  --border: #e3dcd2;
+  --shadow: 0 12px 32px rgba(28, 25, 23, 0.05);
   color-scheme: light;
 }
+
 :root[data-theme="dark"] {
-  --bg: #090e1c;
-  --card: #111a2e;
-  --text: #f3f6ff;
-  --muted: #a5b0c7;
-  --accent: #9a94ff;
-  --accent2: #38d5e8;
-  --line: #26324a;
-  --shadow: 0 18px 50px rgba(0,0,0,.25);
+  --bg: #121110;
+  --surface: #1b1917;
+  --surface-alt: #24211e;
+  --text: #f5f2ed;
+  --muted: #a89f96;
+  --terracotta: #e87a52;
+  --sage: #52b788;
+  --ochre: #e09f3e;
+  --border: #2e2a26;
+  --shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }
+
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: 84px;
 }
+
 body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
-  background:
-    radial-gradient(ellipse at 12% 8%,rgba(101,87,245,.10),transparent 34%),
-    radial-gradient(ellipse at 88% 17%,rgba(18,184,200,.09),transparent 30%),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.7;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.42;
 }
+
+.serif {
+  font-family: 'Newsreader', Georgia, serif;
+}
+
 a {
-  color: var(--accent);
+  color: var(--terracotta);
   text-decoration: none;
 }
-nav {
+
+/* Top Bar */
+.topbar {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar-inner {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 12px clamp(16px, 4vw, 36px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 14px;
-  padding: 15px clamp(16px,4vw,48px);
-  background: color-mix(in srgb,var(--bg) 90%,transparent);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
+  gap: 16px;
 }
-nav b {
-  color: var(--accent);
-  font-size: 1.25rem;
-  font-weight: 900;
-  letter-spacing: .12em;
-}
-nav div {
-  display: flex;
-  gap: 18px;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  font-size: .88rem;
-}
-nav div a {
-  color: var(--muted);
-  font-weight: 600;
-  white-space: nowrap;
-}
-nav div a:hover {
-  color: var(--accent);
-}
-.tg {
-  flex: none;
-  width: 39px;
-  height: 39px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--text);
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-section {
-  width: 100%;
-  max-width: 1160px;
-  margin-inline: auto;
-  padding: 62px clamp(18px,4vw,48px) 12px;
-}
-h2 {
-  font-size: clamp(1.6rem,3vw,2.1rem);
-  letter-spacing: -.035em;
-  margin: 0 0 22px;
-  color: var(--text);
-}
-h2::after {
-  content: "";
-  display: block;
-  width: 48px;
-  height: 4px;
-  border-radius: 8px;
-  background: linear-gradient(90deg,var(--accent),var(--accent2));
-  margin-top: 10px;
-}
-.hero {
-  position: relative;
-  isolation: isolate;
-  min-height: min(850px,calc(100svh - 68px));
-  padding-top: clamp(50px,8vh,100px);
-  padding-bottom: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: -12vw;
-  top: 7%;
-  width: 390px;
-  height: 390px;
-  border-radius: 50%;
-  background: radial-gradient(circle,rgba(101,87,245,.13),transparent 68%);
-  pointer-events: none;
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  right: -9vw;
-  top: 12%;
-  width: 340px;
-  height: 340px;
-  border-radius: 50%;
-  background: radial-gradient(circle,rgba(18,184,200,.12),transparent 68%);
-  pointer-events: none;
-}
-.hg {
-  display: grid;
-  grid-template-columns: minmax(0,1.4fr) minmax(260px,.75fr);
-  gap: clamp(25px,5vw,70px);
-  align-items: center;
-}
-.hg > * {
-  min-width: 0;
-}
-.hero-kicker {
+
+.wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
-  font-size: .78rem;
-  font-weight: 850;
-  letter-spacing: .22em;
-  color: var(--accent);
-  margin-bottom: 12px;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
 }
 
-.live-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #19c58b;
-  display: inline-block;
-  box-shadow: 0 0 0 5px rgba(25,197,139,.12);
+.wordmark-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--terracotta);
+  transform: rotate(45deg);
+}
+
+.nav-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-row::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-row a {
+  padding: 6px 11px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: 0.16s;
+}
+
+.nav-row a:hover {
+  color: var(--text);
+  background: var(--surface-alt);
+}
+
+.theme-btn {
+  flex: none;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.16s;
+}
+
+.theme-btn:hover {
+  border-color: var(--terracotta);
+}
+
+/* Editorial Split Layout */
+.shell {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 32px clamp(16px, 4vw, 36px) 56px;
+  display: grid;
+  grid-template-columns: 310px minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+
+/* Left Sticky Rail */
+.rail {
+  position: sticky;
+  top: 76px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.rail-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 2px solid var(--terracotta);
   flex: none;
 }
 
-h1 {
-  font-size: clamp(3.2rem,7.3vw,6.6rem);
-  line-height: .96;
-  letter-spacing: -.085em;
-  margin: 17px 0 24px;
-  font-weight: 900;
-  overflow-wrap: normal;
+.rail-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
 }
 
-h1 span {
-  display: block;
-  padding-bottom: .08em;
-  background: linear-gradient(100deg,var(--accent) 8%,#8c68ff 48%,var(--accent2) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.sub {
-  font-size: clamp(1.1rem,2.2vw,1.48rem);
+.rail-role {
+  font-size: 0.84rem;
+  color: var(--terracotta);
   font-weight: 700;
-  letter-spacing: -.035em;
-  color: var(--text);
-  margin: 0 0 16px;
+  margin: 3px 0 0;
 }
 
-.role-mark {
-  color: var(--accent);
-  margin-right: 5px;
-}
-
-.role-sep {
-  color: var(--accent2);
-  padding: 0 5px;
-}
-
-.lead {
+.rail-bio {
+  font-size: 0.88rem;
   color: var(--muted);
-  max-width: 650px;
-  font-size: clamp(1rem,1.35vw,1.12rem);
-  line-height: 1.85;
+  margin: 0 0 18px;
+  line-height: 1.45;
 }
 
-.btns {
+.rail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  border-top: 1px solid var(--border);
+}
+
+.rail-list li {
   display: flex;
-  flex-wrap: wrap;
-  gap: 13px;
-  margin-top: 30px;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+
+.rail-list span {
+  color: var(--muted);
+}
+
+.rail-list b {
+  color: var(--text);
+  font-weight: 700;
+  text-align: right;
+}
+
+.rail-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .btn {
-  padding: 13px 21px;
-  border-radius: 13px;
-  font-weight: 750;
-  border: 1px solid var(--line);
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.86rem;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
   color: var(--text);
-  background: var(--card);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: .2s;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.16s;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-  box-shadow: 0 8px 22px rgba(99,91,255,.12);
+  border-color: var(--terracotta);
+  transform: translateY(-1px);
 }
 
-.btn.p {
-  background: linear-gradient(115deg,var(--accent),#8871ff 65%,#5b8cf6);
-  color: white;
-  border-color: transparent;
-  box-shadow: 0 12px 28px rgba(101,87,245,.25);
+.btn.solid {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: #fff;
 }
 
-.btn.p:hover {
-  box-shadow: 0 16px 34px rgba(101,87,245,.34);
+.btn.solid:hover {
+  filter: brightness(1.06);
 }
 
 .soc {
   display: flex;
-  flex-wrap: wrap;
-  gap: 11px;
-  margin-top: 27px;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 
 .soc a {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
-  transition: .2s;
+  flex: 1;
+  height: 38px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  transition: 0.16s;
 }
 
 .soc a:hover {
-  color: white;
-  background: var(--accent);
-  border-color: var(--accent);
-  transform: translateY(-3px);
+  color: #fff;
+  background: var(--sage);
+  border-color: var(--sage);
 }
 
 .soc svg {
-  width: 21px;
-  height: 21px;
+  width: 17px;
+  height: 17px;
   fill: currentColor;
 }
 
-.card,
-.stat {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 21px;
-  box-shadow: var(--shadow);
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.pc {
-  text-align: center;
-  padding: 35px 27px;
-  position: relative;
-  overflow: hidden;
-}
-
-.pc::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 5px;
-  background: linear-gradient(90deg,var(--accent),var(--accent2));
-}
-
-.profile-label {
+/* Right Main Content */
+.main-col {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: var(--accent);
-  font-size: .72rem;
+  flex-direction: column;
+  gap: 44px;
+  min-width: 0;
+}
+
+.hero-banner {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: clamp(24px, 4vw, 38px);
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: .12em;
-  margin-bottom: 22px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  background: color-mix(in srgb, var(--sage) 12%, transparent);
+  padding: 5px 11px;
+  border-radius: 6px;
+  margin-bottom: 14px;
 }
 
-.av {
-  width: 146px;
-  height: 146px;
-  border-radius: 50%;
-  margin: 0 auto 16px;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  border: 5px solid var(--card);
-  box-shadow: 0 0 0 3px var(--accent),0 12px 30px rgba(99,91,255,.2);
+h1 {
+  font-size: clamp(2.1rem, 4.4vw, 3.45rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin: 0 0 14px;
+  font-weight: 800;
 }
 
-.pc h3 {
-  font-size: 1.4rem;
-  margin: 10px 0 2px;
+h1 em {
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: 600;
 }
 
-.pc p {
-  margin: 3px 0;
+.hero-copy {
+  font-size: 1rem;
   color: var(--muted);
-  font-size: .9rem;
+  max-width: 62ch;
+  margin: 0;
+  line-height: 1.5;
 }
 
-.pc .role {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.chips {
+.sec-header {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
 }
 
-.pc .chips {
-  justify-content: center;
-  margin-top: 17px;
+.sec-header h2 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0;
 }
 
-.chip {
+/* Filter Pills */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.f-pill {
   padding: 6px 12px;
   border-radius: 99px;
-  background: color-mix(in srgb,var(--accent) 7%,var(--card));
-  border: 1px solid color-mix(in srgb,var(--accent) 16%,var(--line));
-  font-size: .82rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.f-pill:hover {
+  color: var(--text);
+  border-color: var(--terracotta);
+}
+
+.f-pill.active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: #fff;
+}
+
+/* Cards & Grids */
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+  gap: 14px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.panel h3 {
+  margin: 0 0 4px;
+  font-size: 1.04rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.panel ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.panel li {
+  margin-bottom: 5px;
+  font-size: 0.89rem;
+  color: var(--muted);
+  line-height: 1.38;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  font-size: 0.76rem;
+  font-weight: 600;
   color: var(--text);
 }
 
-.hs {
+/* Project Grid */
+.proj-list {
   display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 14px;
-  margin-top: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
 }
 
-.hs .card {
-  text-align: center;
-  padding: 18px;
-}
-
-.hs b {
-  font-size: 1.8rem;
-  color: var(--accent);
-  display: block;
-  line-height: 1.3;
-}
-
-.hs span {
-  font-size: .82rem;
-  color: var(--muted);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(min(100%,280px),1fr));
-  gap: 18px;
-}
-
-.card h3 {
-  margin: 0 0 5px;
-  font-size: 1.08rem;
-  letter-spacing: -.02em;
-}
-
-.card .m {
-  color: var(--muted);
-  font-size: .86rem;
-  margin-bottom: 12px;
-}
-
-.card ul {
-  margin: 12px 0 0;
-  padding-left: 19px;
-}
-
-.card li {
-  margin-bottom: 8px;
-  font-size: .93rem;
-  color: var(--muted);
-}
-
-.proj {
+.proj-card {
   display: flex;
   flex-direction: column;
-  transition: transform .2s,border-color .2s;
+  transition: transform 0.18s, border-color 0.18s;
 }
 
-.proj:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
+.proj-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--terracotta);
 }
 
-.proj .chips {
+.proj-card.hidden {
+  display: none;
+}
+
+.proj-card .tags {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 14px;
 }
 
-.kpis {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 8px;
-  margin: 8px 0 14px;
-}
-
-.kpis div {
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 11px;
-  padding: 9px 6px;
-  text-align: center;
-}
-
-.kpis b {
-  display: block;
-  color: var(--accent);
-  font-size: 1.02rem;
-}
-
-.kpis span {
-  font-size: .72rem;
-  color: var(--muted);
-}
-
-.card.tl {
-  border-left: 4px solid var(--accent);
-}
-
-.cert {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-}
-
-.cert i {
-  flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 13px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-style: normal;
-  font-size: 1.2rem;
-}
-
-.vb {
-  padding: 8px 13px;
-  font-size: .84rem;
-  margin-top: 14px;
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
+.proj-link {
+  margin-top: 12px;
   align-self: flex-start;
+  font-size: 0.8rem;
+  padding: 7px 12px;
 }
 
-.vb svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
+/* Next Project Loading Soon Card */
+.proj-card.loading-card {
+  border-style: dashed;
+  border-color: var(--ochre);
+  background: color-mix(in srgb, var(--ochre) 6%, var(--surface));
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 220px;
+}
+
+.soon-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  background: color-mix(in srgb, var(--ochre) 14%, transparent);
+  padding: 4px 10px;
+  border-radius: 99px;
+  margin-bottom: 10px;
+}
+
+.soon-text {
+  font-size: 0.86rem;
+  color: var(--muted);
+  max-width: 26ch;
+  margin: 4px 0 12px;
+  line-height: 1.38;
+}
+
+.progress-track {
+  width: 112px;
+  height: 5px;
+  border-radius: 99px;
+  background: var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 48%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--terracotta), var(--ochre), var(--sage));
+  animation: sweep 2s ease-in-out infinite;
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-75%); }
+  50% { transform: translateX(125%); }
+  100% { transform: translateX(-75%); }
+}
+
+/* Certifications */
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.badge-gold {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--sage);
+  background: color-mix(in srgb, var(--sage) 14%, transparent);
+  padding: 2px 7px;
+  border-radius: 5px;
+  margin-left: 4px;
 }
 
 footer {
-  text-align: center;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 20px clamp(16px, 4vw, 36px) 34px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.82rem;
   color: var(--muted);
-  padding: 35px 5vw 26px;
-  font-size: .85rem;
-  border-top: 1px solid var(--line);
-  margin-top: 38px;
 }
 
-::selection {
-  background: var(--accent);
-  color: white;
-}
-
-/* Tablet */
-@media(max-width:900px) {
-  .hg {
-    grid-template-columns: minmax(0,1fr) minmax(240px,.78fr);
-    gap: 25px;
-  }
-
-  h1 {
-    font-size: clamp(3.2rem,7.5vw,5.4rem);
-  }
-
-  .hero {
-    min-height: auto;
-    padding-top: 58px;
-  }
-
-  nav div {
-    gap: 12px;
-  }
-}
-
-/* Mobile */
-@media(max-width:760px) {
-  .hero {
-    min-height: auto;
-    padding-top: 48px;
-    padding-bottom: 18px;
-  }
-
-  .hg {
-    grid-template-columns: minmax(0,1fr);
-    gap: 28px;
-  }
-
-  h1 {
-    font-size: clamp(3.1rem,12.5vw,5rem);
-    line-height: .98;
-    letter-spacing: -.075em;
-  }
-
-  .lead {
-    font-size: 1rem;
-    line-height: 1.75;
-  }
-
-  .pc {
-    max-width: 420px;
-  }
-
-  section:not(.hero) {
-    padding-top: 48px;
-    padding-bottom: 10px;
-  }
-
-  nav {
-    flex-wrap: wrap;
-    align-items: center;
-    padding-top: 11px;
-    padding-bottom: 11px;
-  }
-
-  nav div {
-    order: 3;
-    width: 100%;
-    max-width: 100%;
-    padding: 3px 0 5px;
-    gap: 17px;
-  }
-}
-
-@media(max-width:480px) {
-  h1 {
-    font-size: clamp(2.8rem,12vw,3.8rem);
-  }
-
-  .hero-kicker {
-    font-size: .7rem;
-    letter-spacing: .16em;
-  }
-
-  .sub {
-    font-size: 1.08rem;
-  }
-
-  .btns {
-    gap: 9px;
-  }
-
-  .btn {
-    padding: 11px 14px;
-    font-size: .88rem;
-  }
-
-  .hs {
-    gap: 7px;
-  }
-
-  .hs .card {
-    padding: 12px 5px;
-  }
-
-  .hs b {
-    font-size: 1.35rem;
-  }
-
-  .hs span {
-    font-size: .68rem;
-  }
-
-  .grid {
-    grid-template-columns: minmax(0,1fr);
-    gap: 13px;
-  }
-
-  .card {
-    padding: 19px;
-    border-radius: 17px;
-  }
-
-  .kpis {
-    grid-template-columns: repeat(3,minmax(0,1fr));
-  }
-
-  .av {
-    width: 142px;
-    height: 142px;
-  }
-
-  nav div {
-    gap: 15px;
-  }
-
-  nav div a {
-    font-size: .8rem;
-  }
-
-  section:not(.hero) {
-    padding-top: 42px;
-  }
-}
-
-@media(max-width:350px) {
-  h1 {
-    font-size: 2.65rem;
-  }
-
-  .hs {
+@media (max-width: 960px) {
+  .shell {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
-
-  .hs .card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .btns .btn {
-    flex: 1 1 100%;
+  .rail {
+    position: static;
   }
 }
 </style>
@@ -700,357 +601,393 @@ footer {
   <symbol id="i-gh" viewBox="0 0 24 24">
     <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
   </symbol>
-
   <symbol id="i-li" viewBox="0 0 24 24">
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
   </symbol>
-
   <symbol id="i-wa" viewBox="0 0 24 24">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </symbol>
-
   <symbol id="i-ph" viewBox="0 0 24 24">
     <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
   </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+  </symbol>
 </svg>
 
-<nav>
-  <b>MK</b>
-  <div>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <button class="tg" id="tg" aria-label="Toggle light or dark mode"></button>
-</nav>
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="wordmark">
+      <span class="wordmark-dot"></span>
+      <span>Mahesh Kunchala</span>
+    </a>
 
-<section class="hero" id="top">
-  <div class="hg">
-    <div>
-      <div class="hero-kicker">
-        <span class="live-dot"></span>
-        HELLO, I’M
-      </div>
-
-      <h1>Mahesh <span>Kunchala</span></h1>
-
-      <h2 class="sub">
-        <span class="role-mark">✦</span>
-        Data Analyst
-        <span class="role-sep">/</span>
-        Data Science Graduate
-      </h2>
-
-      <p class="lead">
-        Detail-oriented Data Analyst skilled in SQL, Python, Power BI, and Tableau.
-        Experienced in cleaning, transforming, and visualizing data. Proficient in
-        building dashboards, uncovering insights, and enabling data-driven decisions.
-        Strong in data modeling, statistical analysis, and KPI tracking to drive performance.
-      </p>
-
-      <div class="btns">
-        <a class="btn p" href="#projects">View Projects</a>
-        <a class="btn" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="#contact">Get in touch</a>
-      </div>
-
-      <div class="soc">
-        <a href="https://github.com/maheshkunchala07" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg><use href="#i-gh"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg><use href="#i-li"/></svg>
-        </a>
-        <a href="https://wa.me/917036919344" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg><use href="#i-wa"/></svg>
-        </a>
-        <a href="tel:+917036919344" aria-label="Call">
-          <svg><use href="#i-ph"/></svg>
-        </a>
-      </div>
+    <div class="nav-row">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </div>
 
-    <div class="card pc">
-      <div class="profile-label">
-        <span class="live-dot"></span>
-        OPEN TO OPPORTUNITIES
-      </div>
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">Dark</button>
+  </div>
+</div>
 
+<div class="shell" id="top">
+  <aside class="rail">
+    <div class="rail-top">
       <img
-        class="av"
+        class="avatar"
         src="https://avatars.githubusercontent.com/u/203942371?v=4"
-        alt="Mahesh Kunchala profile photo"
+        alt="Mahesh Kunchala"
       >
-
-      <h3>Mahesh Kunchala</h3>
-      <p class="role">Data Analyst</p>
-      <p>B.Tech Computer Science &amp; Data Science</p>
-      <p>CGPA: 7.37 / 10</p>
-
-      <div class="chips">
-        <span class="chip">Python</span>
-        <span class="chip">SQL</span>
-        <span class="chip">Power BI</span>
-        <span class="chip">Tableau</span>
-        <span class="chip">Excel</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="hs">
-    <div class="card">
-      <b>2</b>
-      <span>Featured Projects</span>
-    </div>
-    <div class="card">
-      <b>5</b>
-      <span>Core Tools</span>
-    </div>
-    <div class="card">
-      <b>2</b>
-      <span>Certifications</span>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <h2>About</h2>
-  <p class="lead">
-    I’m a Computer Science and Data Science graduate who enjoys finding patterns
-    in data and explaining them simply. I’m looking for a Data Analyst role where
-    I can turn business questions into clean analysis and dashboards people actually use.
-  </p>
-</section>
-
-<section id="skills">
-  <h2>Technical Skills</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Languages</h3>
-      <div class="chips">
-        <span class="chip">SQL</span>
-        <span class="chip">Python</span>
+      <div>
+        <h2 class="rail-name">Mahesh Kunchala</h2>
+        <p class="rail-role">Data Analyst</p>
       </div>
     </div>
 
-    <div class="card">
-      <h3>Python Libraries</h3>
-      <div class="chips">
-        <span class="chip">Pandas</span>
-        <span class="chip">NumPy</span>
-        <span class="chip">Matplotlib</span>
-        <span class="chip">Seaborn</span>
-      </div>
-    </div>
+    <p class="rail-bio">
+      Computer Science & Data Science graduate focused on SQL, Python, Power BI, Tableau, and Excel.
+    </p>
 
-    <div class="card">
-      <h3>BI &amp; Visualization</h3>
-      <div class="chips">
-        <span class="chip">Power BI</span>
-        <span class="chip">Tableau</span>
-        <span class="chip">Excel (PivotTables)</span>
-        <span class="chip">Power Query</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Databases &amp; Tools</h3>
-      <div class="chips">
-        <span class="chip">MySQL</span>
-        <span class="chip">Git</span>
-        <span class="chip">GitHub</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Analytics</h3>
-      <div class="chips">
-        <span class="chip">Data Cleaning</span>
-        <span class="chip">Transformation</span>
-        <span class="chip">EDA</span>
-        <span class="chip">ETL</span>
-        <span class="chip">KPI Reporting</span>
-        <span class="chip">Dashboards</span>
-        <span class="chip">Trend Analysis</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <h2>Experience</h2>
-
-  <div class="card tl">
-    <h3>Data Analyst Intern · AI Variant</h3>
-    <div class="m">Hyderabad · Sep 2026</div>
-    <ul>
-      <li>Built interactive dashboards in Power BI, Tableau and Excel to monitor loan KPIs and portfolio performance.</li>
-      <li>Cleaned and transformed large datasets with SQL, Excel and Power Query, resolving duplicate and inconsistent records.</li>
-      <li>Analyzed delinquency by state, branch, loan grade and purpose to identify high-risk segments for lending review.</li>
-      <li>Developed ETL workflows and KPI reports for loan performance tracking.</li>
+    <ul class="rail-list">
+      <li><span>Degree</span><b>B.Tech CS & DS</b></li>
+      <li><span>CGPA</span><b>7.37 / 10</b></li>
+      <li><span>Base</span><b>Hyderabad / AP</b></li>
+      <li><span>Availability</span><b>Open to Roles</b></li>
     </ul>
-  </div>
-</section>
 
-<section id="projects">
-  <h2>Projects</h2>
+    <div class="rail-cta">
+      <a class="btn solid" href="#projects">Browse Projects</a>
+      <a class="btn" href="mailto:maheshkunchala50@gmail.com">Send Email</a>
+    </div>
 
-  <div class="grid">
-    <div class="card proj">
-      <h3>Adventure Works</h3>
-      <div class="m">2026 · Sales analytics</div>
-      <ul>
-        <li>Analyzed sales data in MySQL, joining customer, product, date and sales datasets.</li>
-        <li>Calculated key financial metrics including total sales, production cost and profit.</li>
-        <li>Built Excel, Power BI and Tableau dashboards tracking business KPIs, orders and monthly trends.</li>
-        <li>Identified profit margin and top-performing product categories such as Road Bikes.</li>
-      </ul>
-      <div class="chips">
-        <span class="chip">MySQL</span>
-        <span class="chip">Power BI</span>
-        <span class="chip">Tableau</span>
-        <span class="chip">Excel</span>
-      </div>
-      <a class="btn vb" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
+    <div class="soc">
+      <a href="https://github.com/maheshkunchala07" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
         <svg><use href="#i-gh"/></svg>
-        View in GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/mahesh-babu-kunchala-6a1922290" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg><use href="#i-li"/></svg>
+      </a>
+      <a href="https://wa.me/917036919344" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+        <svg><use href="#i-wa"/></svg>
+      </a>
+      <a href="tel:+917036919344" aria-label="Phone" title="Phone">
+        <svg><use href="#i-ph"/></svg>
       </a>
     </div>
+  </aside>
 
-    <div class="card proj">
-      <h3>Bank Loan Report Analysis</h3>
-      <div class="m">2026 · Lending &amp; risk</div>
-      <ul>
-        <li>Analyzed loan applications for performance, funding trends and repayment patterns.</li>
-        <li>Tracked total funded amount, payments received, and average interest and DTI rates.</li>
-        <li>Compared good and bad loan portfolios to assess lending performance and credit risk.</li>
-        <li>Created Power BI dashboards by state, purpose, employment length and home ownership.</li>
-      </ul>
-      <div class="chips">
-        <span class="chip">SQL</span>
-        <span class="chip">Power BI</span>
-        <span class="chip">Excel</span>
+  <main class="main-col">
+    <section class="hero-banner" id="about">
+      <span class="eyebrow">Data Analytics & Business Intelligence</span>
+      <h1>Turning raw data into <em class="serif">clear decisions.</em></h1>
+      <p class="hero-copy">
+        Detail-oriented Data Analyst experienced in cleaning, transforming, and visualizing data.
+        I enjoy uncovering patterns in datasets, structuring relational queries, and building
+        interactive dashboards that help teams track performance and move with confidence.
+      </p>
+    </section>
+
+    <section id="skills">
+      <div class="sec-header">
+        <h2>Technical Skills</h2>
       </div>
-      <a class="btn vb" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
-        <svg><use href="#i-gh"/></svg>
-        View in GitHub
-      </a>
-    </div>
-  </div>
 
-  <div class="btns">
-    <a class="btn" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
-      See more on GitHub →
-    </a>
-  </div>
-</section>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Languages & Databases</h3>
+          <div class="meta">Querying & scripting</div>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
 
-<section id="certifications">
-  <h2>Certifications</h2>
+        <div class="panel">
+          <h3>Python Libraries</h3>
+          <div class="meta">Data manipulation & plotting</div>
+          <div class="tags">
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Seaborn</span>
+          </div>
+        </div>
 
-  <div class="grid">
-    <div class="card cert">
-      <i>🎓</i>
-      <div>
-        <h3>Data Analytics Essentials</h3>
-        <div class="m">Cisco · 2026</div>
-        <a class="btn vb" href="#certifications">View Certificate</a>
+        <div class="panel">
+          <h3>BI & Spreadsheets</h3>
+          <div class="meta">Dashboards & modeling</div>
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Excel (PivotTables)</span>
+            <span class="tag">Power Query</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Analytics & Workflow</h3>
+          <div class="meta">End-to-end delivery</div>
+          <div class="tags">
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Transformation</span>
+            <span class="tag">EDA</span>
+            <span class="tag">ETL</span>
+            <span class="tag">KPI Reporting</span>
+            <span class="tag">Trend Analysis</span>
+            <span class="tag">Git & GitHub</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="card cert">
-      <i>📊</i>
-      <div>
-        <h3>Data Analytics Job Simulation</h3>
-        <div class="m">Deloitte · 2026</div>
-        <a class="btn vb" href="#certifications">View Certificate</a>
+    <section id="experience">
+      <div class="sec-header">
+        <h2>Experience</h2>
       </div>
-    </div>
-  </div>
-</section>
 
-<section id="education">
-  <h2>Education</h2>
+      <div class="panel">
+        <h3>Data Analyst Intern · AI Variant</h3>
+        <div class="meta">Hyderabad · Sep 2026</div>
+        <ul>
+          <li>Built interactive dashboards in Power BI, Tableau, and Excel to monitor loan KPIs and portfolio health.</li>
+          <li>Cleaned and transformed datasets using SQL, Excel, and Power Query to resolve duplicates and inconsistencies.</li>
+          <li>Analyzed delinquency across states, branches, loan grades, and purposes to highlight higher-risk segments.</li>
+          <li>Developed ETL workflows and KPI reporting views for ongoing loan tracking.</li>
+        </ul>
+      </div>
+    </section>
 
-  <div class="grid">
-    <div class="card">
-      <h3>B.Tech, Computer Science and Data Science</h3>
-      <div class="m">2022 – 2026</div>
-      QIS College of Engineering and Technology, Ongole, Andhra Pradesh
-      <br>
-      CGPA: 7.37 / 10
-    </div>
-  </div>
-</section>
+    <section id="projects">
+      <div class="sec-header">
+        <h2>Projects</h2>
+        <div class="filter-bar" id="filterBar">
+          <button class="f-pill active" data-filter="all">All</button>
+          <button class="f-pill" data-filter="sql">SQL</button>
+          <button class="f-pill" data-filter="powerbi">Power BI</button>
+          <button class="f-pill" data-filter="python">Python</button>
+          <button class="f-pill" data-filter="excel">Excel</button>
+        </div>
+      </div>
 
-<section id="contact">
-  <h2>Contact</h2>
+      <div class="proj-list" id="projList">
+        <div class="panel proj-card" data-tools="sql powerbi tableau excel">
+          <h3>Adventure Works</h3>
+          <div class="meta">Sales & Profitability Analysis</div>
+          <ul>
+            <li>Joined customer, product, date, and sales tables in MySQL to evaluate revenue and margin drivers.</li>
+            <li>Built Excel, Power BI, and Tableau views covering orders, seasonality, categories, and regions.</li>
+            <li>Highlighted top-performing product lines and monthly sales patterns for stakeholders.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Excel</span>
+          </div>
+          <a class="btn proj-link" href="https://github.com/maheshkunchala07/Adventure_works_Analysis" target="_blank" rel="noopener">
+            View on GitHub ↗
+          </a>
+        </div>
 
-  <p class="lead">
-    Open to Data Analyst and Analyst Trainee opportunities.
-    Reach out by phone or explore my work on GitHub.
-  </p>
+        <div class="panel proj-card" data-tools="sql powerbi excel">
+          <h3>Bank Loan Report Analysis</h3>
+          <div class="meta">Lending & Credit Risk</div>
+          <ul>
+            <li>Evaluated loan applications, funding activity, repayment behavior, and borrower profiles in SQL.</li>
+            <li>Compared healthy and charged-off loan segments to support risk assessment.</li>
+            <li>Designed Power BI dashboards broken down by state, loan purpose, tenure, and home ownership.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Excel</span>
+          </div>
+          <a class="btn proj-link" href="https://github.com/maheshkunchala07/Bank_Loan_Report_Analysis" target="_blank" rel="noopener">
+            View on GitHub ↗
+          </a>
+        </div>
 
-  <div class="soc">
-    <a href="https://github.com/maheshkunchala07" target="_blank" rel="noopener" aria-label="GitHub">
-      <svg><use href="#i-gh"/></svg>
-    </a>
-    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg><use href="#i-li"/></svg>
-    </a>
-    <a href="https://wa.me/917036919344" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg><use href="#i-wa"/></svg>
-    </a>
-    <a href="tel:+917036919344" aria-label="Call">
-      <svg><use href="#i-ph"/></svg>
-    </a>
-  </div>
-</section>
+        <div class="panel proj-card" data-tools="python sql powerbi">
+          <h3>Customer Trend Analysis</h3>
+          <div class="meta">Shopping Behavior & Segments</div>
+          <ul>
+            <li>Cleaned and explored shopping behavior data using a Python notebook and SQL queries.</li>
+            <li>Examined customer purchasing habits and segment trends across categories.</li>
+            <li>Created an interactive Power BI dashboard to present customer insights clearly.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Power BI</span>
+          </div>
+          <a class="btn proj-link" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
+            View on GitHub ↗
+          </a>
+        </div>
+
+        <div class="panel proj-card" data-tools="sql powerbi excel">
+          <h3>HR Analytics</h3>
+          <div class="meta">Workforce & People Intelligence</div>
+          <ul>
+            <li>Structured and analyzed employee records using SQL queries and Excel workbooks.</li>
+            <li>Reviewed workforce patterns across departments and tenure groups.</li>
+            <li>Built a Power BI dashboard tracking key people metrics for decision support.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Excel</span>
+          </div>
+          <a class="btn proj-link" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
+            View on GitHub ↗
+          </a>
+        </div>
+
+        <div class="panel proj-card loading-card" data-tools="all">
+          <div class="soon-label">Next Project</div>
+          <h3>Loading Soon</h3>
+          <p class="soon-text">Another end-to-end analytics project and dashboard is currently being prepared.</p>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="sec-header">
+        <h2>Certifications</h2>
+      </div>
+
+      <div class="two-col">
+        <div class="panel cert-card">
+          <div>
+            <h3>Certificate Program in Data Analyst <span class="badge-gold">Gold</span></h3>
+            <div class="meta">IT-ITeS Sector Skills Council NASSCOM · Oct 2026</div>
+          </div>
+          <a class="btn proj-link" href="https://drive.google.com/file/d/1vobyl3O1VtlGfaz-EZKEOhrQAjFU2ZZi/view?usp=sharing" target="_blank" rel="noopener">
+            View Certificate ↗
+          </a>
+        </div>
+
+        <div class="panel cert-card">
+          <div>
+            <h3>Data Analytics Essentials</h3>
+            <div class="meta">Cisco Networking Academy · Jul 2026</div>
+          </div>
+          <a class="btn proj-link" href="https://drive.google.com/file/d/1PdYVmyZhFUvgaA_Ww2KVjZ7eZtr3SUhj/view?usp=sharing" target="_blank" rel="noopener">
+            View Certificate ↗
+          </a>
+        </div>
+
+        <div class="panel cert-card">
+          <div>
+            <h3>Data Analytics Job Simulation</h3>
+            <div class="meta">Deloitte · Jul 2026</div>
+          </div>
+          <a class="btn proj-link" href="https://drive.google.com/file/d/11qcy3jpOwRAi8R_aVBDfetFDB0GCn1Q4/view?usp=sharing" target="_blank" rel="noopener">
+            View Certificate ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="sec-header">
+        <h2>Education</h2>
+      </div>
+
+      <div class="panel">
+        <h3>B.Tech, Computer Science and Data Science</h3>
+        <div class="meta">2022 – 2026 · QIS College of Engineering and Technology, Ongole, Andhra Pradesh</div>
+        <div class="tags">
+          <span class="tag">CGPA: 7.37 / 10</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="sec-header">
+        <h2>Contact</h2>
+      </div>
+
+      <div class="panel">
+        <h3>Open to Data Analyst Opportunities</h3>
+        <div class="meta">Feel free to reach out via email, LinkedIn, WhatsApp, or phone.</div>
+        <div class="tags" style="margin-top:14px;">
+          <a class="btn solid" href="mailto:maheshkunchala50@gmail.com">
+            <svg width="15" height="15" fill="currentColor"><use href="#i-mail"/></svg>
+            Email
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/mahesh-babu-kunchala-6a1922290" target="_blank" rel="noopener">
+            <svg width="15" height="15" fill="currentColor"><use href="#i-li"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="https://wa.me/917036919344" target="_blank" rel="noopener">
+            <svg width="15" height="15" fill="currentColor"><use href="#i-wa"/></svg>
+            WhatsApp
+          </a>
+          <a class="btn" href="tel:+917036919344">
+            <svg width="15" height="15" fill="currentColor"><use href="#i-ph"/></svg>
+            Call
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
 
 <footer>
-  © 2026 Mahesh Kunchala
+  <span>© 2026 Mahesh Kunchala</span>
+  <span>SQL · Python · Power BI · Tableau · Excel</span>
 </footer>
 
 <script>
-(function() {
+(function () {
   var root = document.documentElement;
-  var button = document.getElementById("tg");
+  var btn = document.getElementById("themeToggle");
 
-  function currentTheme() {
-    return root.getAttribute("data-theme") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-  }
-
-  function syncButton() {
-    button.textContent = currentTheme() === "dark" ? "☀" : "☾";
+  function syncLabel() {
+    var dark = root.getAttribute("data-theme") === "dark";
+    btn.textContent = dark ? "Light" : "Dark";
   }
 
   try {
-    var savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      root.setAttribute("data-theme", savedTheme);
-    }
-  } catch(error) {}
+    var saved = localStorage.getItem("editorial-theme");
+    if (saved) root.setAttribute("data-theme", saved);
+  } catch (e) {}
 
-  button.onclick = function() {
-    var nextTheme = currentTheme() === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", nextTheme);
-
-    try {
-      localStorage.setItem("theme", nextTheme);
-    } catch(error) {}
-
-    syncButton();
+  btn.onclick = function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("editorial-theme", next); } catch (e) {}
+    syncLabel();
   };
+  syncLabel();
 
-  syncButton();
+  var pills = document.querySelectorAll(".f-pill");
+  var cards = document.querySelectorAll("#projList .proj-card");
+
+  pills.forEach(function (pill) {
+    pill.addEventListener("click", function () {
+      pills.forEach(function (p) { p.classList.remove("active"); });
+      pill.classList.add("active");
+      var filter = pill.getAttribute("data-filter");
+
+      cards.forEach(function (card) {
+        var tools = card.getAttribute("data-tools") || "";
+        var match = filter === "all" || tools === "all" || tools.split(" ").indexOf(filter) !== -1;
+        card.classList.toggle("hidden", !match);
+      });
+    });
+  });
 })();
 </script>
 
