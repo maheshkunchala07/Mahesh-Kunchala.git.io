@@ -1,43 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#c85a32">
+<meta name="theme-color" content="#0b221e">
 <meta name="description" content="Mahesh Kunchala — Data Analyst Portfolio">
 <title>Mahesh Kunchala | Data Analyst</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #f7f4ef;
-  --surface: #ffffff;
-  --surface-alt: #efeae2;
-  --text: #1c1917;
-  --muted: #5c554e;
-  --terracotta: #c85a32;
-  --sage: #2d6a4f;
-  --ochre: #b4690e;
-  --border: #e3dcd2;
-  --shadow: 0 12px 32px rgba(28, 25, 23, 0.05);
-  color-scheme: light;
+  --bg: #0b221e;
+  --bento: #112e29;
+  --bento-soft: #173b35;
+  --text: #f4f7f5;
+  --muted: #a6bdb7;
+  --gold: #e0b052;
+  --teal: #2dd4bf;
+  --line: rgba(244, 247, 245, 0.11);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
 }
 
-:root[data-theme="dark"] {
-  --bg: #121110;
-  --surface: #1b1917;
-  --surface-alt: #24211e;
-  --text: #f5f2ed;
-  --muted: #a89f96;
-  --terracotta: #e87a52;
-  --sage: #52b788;
-  --ochre: #e09f3e;
-  --border: #2e2a26;
-  --shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
-  color-scheme: dark;
+:root[data-theme="light"] {
+  --bg: #f6f4ee;
+  --bento: #ffffff;
+  --bento-soft: #ece8de;
+  --text: #102420;
+  --muted: #4b615c;
+  --gold: #a87416;
+  --teal: #0d7a6e;
+  --line: rgba(16, 36, 32, 0.1);
+  --shadow: 0 14px 36px rgba(16, 36, 32, 0.06);
+  color-scheme: light;
 }
 
 * {
@@ -46,7 +44,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 84px;
+  scroll-padding-top: 86px;
 }
 
 body {
@@ -55,335 +53,348 @@ body {
   overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
   line-height: 1.42;
 }
 
-.serif {
-  font-family: 'Newsreader', Georgia, serif;
+.display-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
 }
 
 a {
-  color: var(--terracotta);
+  color: var(--gold);
   text-decoration: none;
 }
 
-/* Top Bar */
-.topbar {
+/* Floating Pill Nav */
+.dock-wrap {
   position: sticky;
-  top: 0;
-  z-index: 30;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+  top: 14px;
+  z-index: 40;
+  padding: 0 clamp(14px, 4vw, 36px);
 }
 
-.topbar-inner {
-  max-width: 1220px;
+.dock {
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 12px clamp(16px, 4vw, 36px);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bento) 84%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
-.wordmark {
+.brand-pill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   font-weight: 800;
-  font-size: 0.98rem;
-  letter-spacing: -0.01em;
+  font-size: 0.92rem;
   color: var(--text);
+  padding-left: 4px;
 }
 
-.wordmark-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-  background: var(--terracotta);
-  transform: rotate(45deg);
+.gem {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 22%, transparent);
 }
 
-.nav-row {
+.dock-links {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 4px;
   overflow-x: auto;
   scrollbar-width: none;
 }
 
-.nav-row::-webkit-scrollbar {
+.dock-links::-webkit-scrollbar {
   display: none;
 }
 
-.nav-row a {
-  padding: 6px 11px;
-  border-radius: 8px;
+.dock-links a {
+  padding: 6px 12px;
+  border-radius: 999px;
   color: var(--muted);
-  font-size: 0.84rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   white-space: nowrap;
   transition: 0.16s;
 }
 
-.nav-row a:hover {
+.dock-links a:hover {
   color: var(--text);
-  background: var(--surface-alt);
+  background: var(--bento-soft);
 }
 
-.theme-btn {
+.mode-btn {
   flex: none;
-  padding: 7px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bento-soft);
   color: var(--text);
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
   cursor: pointer;
   transition: 0.16s;
 }
 
-.theme-btn:hover {
-  border-color: var(--terracotta);
+.mode-btn:hover {
+  border-color: var(--gold);
 }
 
-/* Editorial Split Layout */
-.shell {
-  max-width: 1220px;
+/* Container */
+.page {
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 32px clamp(16px, 4vw, 36px) 56px;
-  display: grid;
-  grid-template-columns: 310px minmax(0, 1fr);
-  gap: 36px;
-  align-items: start;
-}
-
-/* Left Sticky Rail */
-.rail {
-  position: sticky;
-  top: 76px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: var(--shadow);
-}
-
-.rail-top {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.avatar {
-  width: 68px;
-  height: 68px;
-  border-radius: 16px;
-  object-fit: cover;
-  border: 2px solid var(--terracotta);
-  flex: none;
-}
-
-.rail-name {
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin: 0;
-  line-height: 1.2;
-}
-
-.rail-role {
-  font-size: 0.84rem;
-  color: var(--terracotta);
-  font-weight: 700;
-  margin: 3px 0 0;
-}
-
-.rail-bio {
-  font-size: 0.88rem;
-  color: var(--muted);
-  margin: 0 0 18px;
-  line-height: 1.45;
-}
-
-.rail-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-  border-top: 1px solid var(--border);
-}
-
-.rail-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.82rem;
-}
-
-.rail-list span {
-  color: var(--muted);
-}
-
-.rail-list b {
-  color: var(--text);
-  font-weight: 700;
-  text-align: right;
-}
-
-.rail-cta {
+  padding: 26px clamp(14px, 4vw, 36px) 54px;
   display: flex;
   flex-direction: column;
+  gap: 42px;
+}
+
+/* Bento Hero */
+.bento-hero {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tile {
+  background: var(--bento);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.tile:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
+}
+
+.hero-main {
+  grid-column: span 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(24px, 3.8vw, 38px);
+}
+
+.hero-side {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--teal) 14%, transparent), transparent 65%),
+    var(--bento);
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5.2vw, 4.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 0 0 14px;
+  font-weight: 800;
+}
+
+h1 span.accent-italic {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+  font-size: 1.08em;
+}
+
+.subhead {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.copy {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.48;
+  margin: 0;
+  max-width: 60ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
 }
 
 .btn {
-  padding: 10px 15px;
-  border-radius: 10px;
+  padding: 10px 17px;
+  border-radius: 999px;
+  font-size: 0.85rem;
   font-weight: 700;
-  font-size: 0.86rem;
-  border: 1px solid var(--border);
-  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  background: var(--bento-soft);
   color: var(--text);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
   cursor: pointer;
   transition: 0.16s;
 }
 
 .btn:hover {
-  border-color: var(--terracotta);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  border-color: var(--gold);
 }
 
-.btn.solid {
-  background: var(--terracotta);
-  border-color: var(--terracotta);
-  color: #fff;
+.btn.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0b221e;
 }
 
-.btn.solid:hover {
-  filter: brightness(1.06);
+.portrait {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  object-fit: cover;
+  margin: 0 auto 14px;
+  border: 3px solid var(--gold);
+  display: block;
 }
 
-.soc {
-  display: flex;
+.side-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0 0 4px;
+}
+
+.side-role {
+  font-size: 0.86rem;
+  color: var(--teal);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.mini-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
+  text-align: left;
+  margin-bottom: 14px;
 }
 
-.soc a {
-  flex: 1;
-  height: 38px;
-  border-radius: 9px;
-  border: 1px solid var(--border);
-  background: var(--bg);
+.mini-stats div {
+  background: var(--bento-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 9px 11px;
+}
+
+.mini-stats span {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--muted);
+}
+
+.mini-stats b {
+  font-size: 0.84rem;
+  color: var(--text);
+}
+
+.soc-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.soc-row a {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bento-soft);
+  color: var(--text);
   display: grid;
   place-items: center;
   transition: 0.16s;
 }
 
-.soc a:hover {
-  color: #fff;
-  background: var(--sage);
-  border-color: var(--sage);
+.soc-row a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0b221e;
 }
 
-.soc svg {
+.soc-row svg {
   width: 17px;
   height: 17px;
   fill: currentColor;
 }
 
-/* Right Main Content */
-.main-col {
-  display: flex;
-  flex-direction: column;
-  gap: 44px;
-  min-width: 0;
-}
-
-.hero-banner {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: clamp(24px, 4vw, 38px);
-  box-shadow: var(--shadow);
-}
-
-.eyebrow {
-  display: inline-block;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--sage);
-  background: color-mix(in srgb, var(--sage) 12%, transparent);
-  padding: 5px 11px;
-  border-radius: 6px;
-  margin-bottom: 14px;
-}
-
-h1 {
-  font-size: clamp(2.1rem, 4.4vw, 3.45rem);
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-  margin: 0 0 14px;
-  font-weight: 800;
-}
-
-h1 em {
-  font-style: italic;
-  color: var(--terracotta);
-  font-weight: 600;
-}
-
-.hero-copy {
-  font-size: 1rem;
-  color: var(--muted);
-  max-width: 62ch;
-  margin: 0;
-  line-height: 1.5;
-}
-
-.sec-header {
+/* Section Headers */
+.sec-bar {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
 }
 
-.sec-header h2 {
-  font-size: 1.45rem;
+.sec-bar h2 {
+  font-size: clamp(1.45rem, 2.8vw, 1.9rem);
   font-weight: 800;
   letter-spacing: -0.025em;
   margin: 0;
 }
 
-/* Filter Pills */
-.filter-bar {
+.sec-bar h2 span {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+/* Filter Chips */
+.filter-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-.f-pill {
-  padding: 6px 12px;
-  border-radius: 99px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+.f-chip {
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bento);
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 700;
@@ -391,190 +402,192 @@ h1 em {
   transition: 0.15s;
 }
 
-.f-pill:hover {
+.f-chip:hover {
   color: var(--text);
-  border-color: var(--terracotta);
+  border-color: var(--teal);
 }
 
-.f-pill.active {
-  background: var(--terracotta);
-  border-color: var(--terracotta);
-  color: #fff;
+.f-chip.active {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #061815;
 }
 
-/* Cards & Grids */
-.two-col {
+/* Grids */
+.grid-auto {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 275px), 1fr));
+  gap: 16px;
 }
 
-.panel {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: var(--shadow);
-  min-width: 0;
+.grid-proj {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 16px;
 }
 
-.panel h3 {
+.tile h3 {
   margin: 0 0 4px;
-  font-size: 1.04rem;
+  font-size: 1.06rem;
   font-weight: 800;
   letter-spacing: -0.015em;
 }
 
-.meta {
+.sub-meta {
   font-size: 0.8rem;
   color: var(--muted);
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.panel ul {
+.tile ul {
   margin: 8px 0 0;
   padding-left: 18px;
 }
 
-.panel li {
+.tile li {
   margin-bottom: 5px;
   font-size: 0.89rem;
   color: var(--muted);
   line-height: 1.38;
 }
 
-.tags {
+.pills {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 12px;
 }
 
-.tag {
+.pill {
   padding: 4px 10px;
-  border-radius: 6px;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bento-soft);
+  border: 1px solid var(--line);
   font-size: 0.76rem;
   font-weight: 600;
   color: var(--text);
 }
 
-/* Project Grid */
-.proj-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 16px;
-}
-
-.proj-card {
+/* Project Cards */
+.proj-tile {
   display: flex;
   flex-direction: column;
   transition: transform 0.18s, border-color 0.18s;
 }
 
-.proj-card:hover {
+.proj-tile:hover {
   transform: translateY(-3px);
-  border-color: var(--terracotta);
 }
 
-.proj-card.hidden {
+.proj-tile.hidden {
   display: none;
 }
 
-.proj-card .tags {
+.proj-tile .pills {
   margin-top: auto;
   padding-top: 14px;
 }
 
-.proj-link {
+.small-btn {
   margin-top: 12px;
   align-self: flex-start;
+  padding: 7px 14px;
   font-size: 0.8rem;
-  padding: 7px 12px;
 }
 
-/* Next Project Loading Soon Card */
-.proj-card.loading-card {
+/* Next Project Loading Soon Tile */
+.proj-tile.soon-tile {
   border-style: dashed;
-  border-color: var(--ochre);
-  background: color-mix(in srgb, var(--ochre) 6%, var(--surface));
+  border-color: color-mix(in srgb, var(--gold) 55%, var(--line));
+  background:
+    radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 60%),
+    var(--bento);
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 220px;
+  min-height: 225px;
 }
 
-.soon-label {
+.soon-pill {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  padding: 4px 11px;
+  border-radius: 999px;
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ochre);
-  background: color-mix(in srgb, var(--ochre) 14%, transparent);
-  padding: 4px 10px;
-  border-radius: 99px;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 15%, transparent);
   margin-bottom: 10px;
 }
 
-.soon-text {
+.soon-note {
   font-size: 0.86rem;
   color: var(--muted);
-  max-width: 26ch;
+  max-width: 27ch;
   margin: 4px 0 12px;
   line-height: 1.38;
 }
 
-.progress-track {
-  width: 112px;
+.loader-rail {
+  width: 118px;
   height: 5px;
-  border-radius: 99px;
-  background: var(--border);
+  border-radius: 999px;
+  background: var(--bento-soft);
   overflow: hidden;
   position: relative;
 }
 
-.progress-fill {
+.loader-bar {
   height: 100%;
-  width: 48%;
-  border-radius: 99px;
-  background: linear-gradient(90deg, var(--terracotta), var(--ochre), var(--sage));
-  animation: sweep 2s ease-in-out infinite;
+  width: 50%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  animation: glide 1.9s ease-in-out infinite;
 }
 
-@keyframes sweep {
+@keyframes glide {
   0% { transform: translateX(-75%); }
-  50% { transform: translateX(125%); }
+  50% { transform: translateX(120%); }
   100% { transform: translateX(-75%); }
 }
 
 /* Certifications */
-.cert-card {
+.cert-tile {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.badge-gold {
+.gold-badge {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 800;
-  color: var(--sage);
-  background: color-mix(in srgb, var(--sage) 14%, transparent);
-  padding: 2px 7px;
-  border-radius: 5px;
-  margin-left: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #0b221e;
+  background: var(--gold);
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* Contact & Footer */
+.contact-tile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
 }
 
 footer {
-  max-width: 1220px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 20px clamp(16px, 4vw, 36px) 34px;
-  border-top: 1px solid var(--border);
+  padding: 20px clamp(14px, 4vw, 36px) 34px;
+  border-top: 1px solid var(--line);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -583,13 +596,26 @@ footer {
   color: var(--muted);
 }
 
-@media (max-width: 960px) {
-  .shell {
-    grid-template-columns: 1fr;
-    gap: 24px;
+@media (max-width: 900px) {
+  .hero-main,
+  .hero-side {
+    grid-column: span 12;
   }
-  .rail {
-    position: static;
+}
+
+@media (max-width: 640px) {
+  .dock {
+    border-radius: 18px;
+    flex-wrap: wrap;
+  }
+  .dock-links {
+    order: 3;
+    width: 100%;
+    padding-top: 6px;
+    border-top: 1px solid var(--line);
+  }
+  .grid-proj {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -615,14 +641,14 @@ footer {
   </symbol>
 </svg>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <a href="#top" class="wordmark">
-      <span class="wordmark-dot"></span>
-      <span>Mahesh Kunchala</span>
+<div class="dock-wrap">
+  <nav class="dock">
+    <a href="#top" class="brand-pill">
+      <span class="gem"></span>
+      <span>MK</span>
     </a>
 
-    <div class="nav-row">
+    <div class="dock-links">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
@@ -632,316 +658,314 @@ footer {
       <a href="#contact">Contact</a>
     </div>
 
-    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">Dark</button>
-  </div>
+    <button class="mode-btn" id="modeToggle" aria-label="Toggle theme">Ivory</button>
+  </nav>
 </div>
 
-<div class="shell" id="top">
-  <aside class="rail">
-    <div class="rail-top">
-      <img
-        class="avatar"
-        src="https://avatars.githubusercontent.com/u/203942371?v=4"
-        alt="Mahesh Kunchala"
-      >
+<div class="page" id="top">
+  <section class="bento-hero" id="about">
+    <div class="tile hero-main">
       <div>
-        <h2 class="rail-name">Mahesh Kunchala</h2>
-        <p class="rail-role">Data Analyst</p>
+        <div class="kicker">● Open to Data Analyst Opportunities</div>
+        <h1>Mahesh <span class="accent-italic">Kunchala</span></h1>
+        <p class="subhead">Data Analyst · SQL, Python, Power BI, Tableau & Excel</p>
+        <p class="copy">
+          Detail-oriented Data Analyst skilled in cleaning, transforming, and visualizing data.
+          I enjoy building structured queries, intuitive dashboards, and clear analytical narratives
+          that help teams understand performance and make informed decisions.
+        </p>
+      </div>
+
+      <div class="actions">
+        <a class="btn gold" href="#projects">View Projects</a>
+        <a class="btn" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">GitHub Profile</a>
+        <a class="btn" href="#contact">Get in Touch</a>
       </div>
     </div>
 
-    <p class="rail-bio">
-      Computer Science & Data Science graduate focused on SQL, Python, Power BI, Tableau, and Excel.
-    </p>
+    <div class="tile hero-side">
+      <div>
+        <img
+          class="portrait"
+          src="https://avatars.githubusercontent.com/u/203942371?v=4"
+          alt="Mahesh Kunchala"
+        >
+        <h2 class="side-name">Mahesh Kunchala</h2>
+        <p class="side-role">CS & Data Science Graduate</p>
+      </div>
 
-    <ul class="rail-list">
-      <li><span>Degree</span><b>B.Tech CS & DS</b></li>
-      <li><span>CGPA</span><b>7.37 / 10</b></li>
-      <li><span>Base</span><b>Hyderabad / AP</b></li>
-      <li><span>Availability</span><b>Open to Roles</b></li>
-    </ul>
+      <div class="mini-stats">
+        <div>
+          <span>Degree</span>
+          <b>B.Tech CS & DS</b>
+        </div>
+        <div>
+          <span>CGPA</span>
+          <b>7.37 / 10</b>
+        </div>
+        <div>
+          <span>Focus</span>
+          <b>BI & Analytics</b>
+        </div>
+        <div>
+          <span>Region</span>
+          <b>Hyderabad / AP</b>
+        </div>
+      </div>
 
-    <div class="rail-cta">
-      <a class="btn solid" href="#projects">Browse Projects</a>
-      <a class="btn" href="mailto:maheshkunchala50@gmail.com">Send Email</a>
+      <div class="soc-row">
+        <a href="https://github.com/maheshkunchala07" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg><use href="#i-gh"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/mahesh-babu-kunchala-6a1922290" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg><use href="#i-li"/></svg>
+        </a>
+        <a href="mailto:maheshkunchala50@gmail.com" aria-label="Email" title="Email">
+          <svg><use href="#i-mail"/></svg>
+        </a>
+        <a href="https://wa.me/917036919344" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+          <svg><use href="#i-wa"/></svg>
+        </a>
+        <a href="tel:+917036919344" aria-label="Phone" title="Phone">
+          <svg><use href="#i-ph"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-bar">
+      <h2>Technical <span>Skills</span></h2>
     </div>
 
-    <div class="soc">
-      <a href="https://github.com/maheshkunchala07" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-        <svg><use href="#i-gh"/></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/mahesh-babu-kunchala-6a1922290" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-        <svg><use href="#i-li"/></svg>
-      </a>
-      <a href="https://wa.me/917036919344" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
-        <svg><use href="#i-wa"/></svg>
-      </a>
-      <a href="tel:+917036919344" aria-label="Phone" title="Phone">
-        <svg><use href="#i-ph"/></svg>
-      </a>
+    <div class="grid-auto">
+      <div class="tile">
+        <h3>Languages & Databases</h3>
+        <div class="sub-meta">Querying & scripting</div>
+        <div class="pills">
+          <span class="pill">SQL</span>
+          <span class="pill">MySQL</span>
+          <span class="pill">Python</span>
+        </div>
+      </div>
+
+      <div class="tile">
+        <h3>Python Libraries</h3>
+        <div class="sub-meta">Data manipulation & charts</div>
+        <div class="pills">
+          <span class="pill">Pandas</span>
+          <span class="pill">NumPy</span>
+          <span class="pill">Matplotlib</span>
+          <span class="pill">Seaborn</span>
+        </div>
+      </div>
+
+      <div class="tile">
+        <h3>BI & Spreadsheets</h3>
+        <div class="sub-meta">Dashboards & modeling</div>
+        <div class="pills">
+          <span class="pill">Power BI</span>
+          <span class="pill">Tableau</span>
+          <span class="pill">Excel (PivotTables)</span>
+          <span class="pill">Power Query</span>
+        </div>
+      </div>
+
+      <div class="tile">
+        <h3>Analytics & Tools</h3>
+        <div class="sub-meta">Workflow & reporting</div>
+        <div class="pills">
+          <span class="pill">Data Cleaning</span>
+          <span class="pill">Data Transformation</span>
+          <span class="pill">EDA</span>
+          <span class="pill">ETL</span>
+          <span class="pill">KPI Reporting</span>
+          <span class="pill">Trend Analysis</span>
+          <span class="pill">Git & GitHub</span>
+        </div>
+      </div>
     </div>
-  </aside>
+  </section>
 
-  <main class="main-col">
-    <section class="hero-banner" id="about">
-      <span class="eyebrow">Data Analytics & Business Intelligence</span>
-      <h1>Turning raw data into <em class="serif">clear decisions.</em></h1>
-      <p class="hero-copy">
-        Detail-oriented Data Analyst experienced in cleaning, transforming, and visualizing data.
-        I enjoy uncovering patterns in datasets, structuring relational queries, and building
-        interactive dashboards that help teams track performance and move with confidence.
-      </p>
-    </section>
+  <section id="experience">
+    <div class="sec-bar">
+      <h2>Work <span>Experience</span></h2>
+    </div>
 
-    <section id="skills">
-      <div class="sec-header">
-        <h2>Technical Skills</h2>
+    <div class="tile">
+      <h3>Data Analyst Intern · AI Variant</h3>
+      <div class="sub-meta">Hyderabad · Sep 2026</div>
+      <ul>
+        <li>Built interactive dashboards in Power BI, Tableau, and Excel to monitor loan KPIs and portfolio performance.</li>
+        <li>Cleaned and transformed datasets using SQL, Excel, and Power Query to resolve duplicates and inconsistencies.</li>
+        <li>Analyzed delinquency across states, branches, loan grades, and purposes to highlight higher-risk segments.</li>
+        <li>Developed ETL workflows and KPI reporting views for loan performance tracking.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-bar">
+      <h2>Selected <span>Projects</span></h2>
+      <div class="filter-pills" id="filterPills">
+        <button class="f-chip active" data-filter="all">All</button>
+        <button class="f-chip" data-filter="sql">SQL</button>
+        <button class="f-chip" data-filter="powerbi">Power BI</button>
+        <button class="f-chip" data-filter="python">Python</button>
+        <button class="f-chip" data-filter="excel">Excel</button>
       </div>
+    </div>
 
-      <div class="two-col">
-        <div class="panel">
-          <h3>Languages & Databases</h3>
-          <div class="meta">Querying & scripting</div>
-          <div class="tags">
-            <span class="tag">SQL</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Python</span>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h3>Python Libraries</h3>
-          <div class="meta">Data manipulation & plotting</div>
-          <div class="tags">
-            <span class="tag">Pandas</span>
-            <span class="tag">NumPy</span>
-            <span class="tag">Matplotlib</span>
-            <span class="tag">Seaborn</span>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h3>BI & Spreadsheets</h3>
-          <div class="meta">Dashboards & modeling</div>
-          <div class="tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">Tableau</span>
-            <span class="tag">Excel (PivotTables)</span>
-            <span class="tag">Power Query</span>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h3>Analytics & Workflow</h3>
-          <div class="meta">End-to-end delivery</div>
-          <div class="tags">
-            <span class="tag">Data Cleaning</span>
-            <span class="tag">Transformation</span>
-            <span class="tag">EDA</span>
-            <span class="tag">ETL</span>
-            <span class="tag">KPI Reporting</span>
-            <span class="tag">Trend Analysis</span>
-            <span class="tag">Git & GitHub</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="sec-header">
-        <h2>Experience</h2>
-      </div>
-
-      <div class="panel">
-        <h3>Data Analyst Intern · AI Variant</h3>
-        <div class="meta">Hyderabad · Sep 2026</div>
+    <div class="grid-proj" id="projGrid">
+      <div class="tile proj-tile" data-tools="sql powerbi tableau excel">
+        <h3>Adventure Works</h3>
+        <div class="sub-meta">Sales & Profitability Analysis</div>
         <ul>
-          <li>Built interactive dashboards in Power BI, Tableau, and Excel to monitor loan KPIs and portfolio health.</li>
-          <li>Cleaned and transformed datasets using SQL, Excel, and Power Query to resolve duplicates and inconsistencies.</li>
-          <li>Analyzed delinquency across states, branches, loan grades, and purposes to highlight higher-risk segments.</li>
-          <li>Developed ETL workflows and KPI reporting views for ongoing loan tracking.</li>
+          <li>Joined customer, product, date, and sales datasets in MySQL to evaluate revenue, cost, and profit drivers.</li>
+          <li>Built Excel, Power BI, and Tableau dashboards tracking business KPIs, order patterns, and regional performance.</li>
+          <li>Surfaced top-performing product categories and seasonal sales trends for decision-making.</li>
         </ul>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="sec-header">
-        <h2>Projects</h2>
-        <div class="filter-bar" id="filterBar">
-          <button class="f-pill active" data-filter="all">All</button>
-          <button class="f-pill" data-filter="sql">SQL</button>
-          <button class="f-pill" data-filter="powerbi">Power BI</button>
-          <button class="f-pill" data-filter="python">Python</button>
-          <button class="f-pill" data-filter="excel">Excel</button>
+        <div class="pills">
+          <span class="pill">MySQL</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Tableau</span>
+          <span class="pill">Excel</span>
         </div>
+        <a class="btn small-btn" href="https://github.com/maheshkunchala07/Adventure_works_Analysis" target="_blank" rel="noopener">
+          View Repository ↗
+        </a>
       </div>
 
-      <div class="proj-list" id="projList">
-        <div class="panel proj-card" data-tools="sql powerbi tableau excel">
-          <h3>Adventure Works</h3>
-          <div class="meta">Sales & Profitability Analysis</div>
-          <ul>
-            <li>Joined customer, product, date, and sales tables in MySQL to evaluate revenue and margin drivers.</li>
-            <li>Built Excel, Power BI, and Tableau views covering orders, seasonality, categories, and regions.</li>
-            <li>Highlighted top-performing product lines and monthly sales patterns for stakeholders.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">MySQL</span>
-            <span class="tag">Power BI</span>
-            <span class="tag">Tableau</span>
-            <span class="tag">Excel</span>
-          </div>
-          <a class="btn proj-link" href="https://github.com/maheshkunchala07/Adventure_works_Analysis" target="_blank" rel="noopener">
-            View on GitHub ↗
-          </a>
+      <div class="tile proj-tile" data-tools="sql powerbi excel">
+        <h3>Bank Loan Report Analysis</h3>
+        <div class="sub-meta">Lending & Credit Risk</div>
+        <ul>
+          <li>Analyzed loan applications, funding patterns, repayment activity, and borrower profiles using SQL.</li>
+          <li>Compared healthy and charged-off loan portfolios to support lending and credit risk evaluation.</li>
+          <li>Created interactive Power BI dashboards sliced by state, loan purpose, employment length, and home ownership.</li>
+        </ul>
+        <div class="pills">
+          <span class="pill">SQL</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Excel</span>
         </div>
-
-        <div class="panel proj-card" data-tools="sql powerbi excel">
-          <h3>Bank Loan Report Analysis</h3>
-          <div class="meta">Lending & Credit Risk</div>
-          <ul>
-            <li>Evaluated loan applications, funding activity, repayment behavior, and borrower profiles in SQL.</li>
-            <li>Compared healthy and charged-off loan segments to support risk assessment.</li>
-            <li>Designed Power BI dashboards broken down by state, loan purpose, tenure, and home ownership.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">SQL</span>
-            <span class="tag">Power BI</span>
-            <span class="tag">Excel</span>
-          </div>
-          <a class="btn proj-link" href="https://github.com/maheshkunchala07/Bank_Loan_Report_Analysis" target="_blank" rel="noopener">
-            View on GitHub ↗
-          </a>
-        </div>
-
-        <div class="panel proj-card" data-tools="python sql powerbi">
-          <h3>Customer Trend Analysis</h3>
-          <div class="meta">Shopping Behavior & Segments</div>
-          <ul>
-            <li>Cleaned and explored shopping behavior data using a Python notebook and SQL queries.</li>
-            <li>Examined customer purchasing habits and segment trends across categories.</li>
-            <li>Created an interactive Power BI dashboard to present customer insights clearly.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Power BI</span>
-          </div>
-          <a class="btn proj-link" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
-            View on GitHub ↗
-          </a>
-        </div>
-
-        <div class="panel proj-card" data-tools="sql powerbi excel">
-          <h3>HR Analytics</h3>
-          <div class="meta">Workforce & People Intelligence</div>
-          <ul>
-            <li>Structured and analyzed employee records using SQL queries and Excel workbooks.</li>
-            <li>Reviewed workforce patterns across departments and tenure groups.</li>
-            <li>Built a Power BI dashboard tracking key people metrics for decision support.</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">SQL</span>
-            <span class="tag">Power BI</span>
-            <span class="tag">Excel</span>
-          </div>
-          <a class="btn proj-link" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
-            View on GitHub ↗
-          </a>
-        </div>
-
-        <div class="panel proj-card loading-card" data-tools="all">
-          <div class="soon-label">Next Project</div>
-          <h3>Loading Soon</h3>
-          <p class="soon-text">Another end-to-end analytics project and dashboard is currently being prepared.</p>
-          <div class="progress-track" aria-hidden="true">
-            <div class="progress-fill"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="certifications">
-      <div class="sec-header">
-        <h2>Certifications</h2>
+        <a class="btn small-btn" href="https://github.com/maheshkunchala07/Bank_Loan_Report_Analysis" target="_blank" rel="noopener">
+          View Repository ↗
+        </a>
       </div>
 
-      <div class="two-col">
-        <div class="panel cert-card">
-          <div>
-            <h3>Certificate Program in Data Analyst <span class="badge-gold">Gold</span></h3>
-            <div class="meta">IT-ITeS Sector Skills Council NASSCOM · Oct 2026</div>
-          </div>
-          <a class="btn proj-link" href="https://drive.google.com/file/d/1vobyl3O1VtlGfaz-EZKEOhrQAjFU2ZZi/view?usp=sharing" target="_blank" rel="noopener">
-            View Certificate ↗
-          </a>
+      <div class="tile proj-tile" data-tools="python sql powerbi">
+        <h3>Customer Trend Analysis</h3>
+        <div class="sub-meta">Shopping Behavior & Segments</div>
+        <ul>
+          <li>Cleaned and explored shopping behavior data using a Python notebook and structured SQL queries.</li>
+          <li>Examined customer purchasing trends and segment behavior across the dataset.</li>
+          <li>Built an interactive Power BI dashboard to visualize customer and trend insights.</li>
+        </ul>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Power BI</span>
         </div>
-
-        <div class="panel cert-card">
-          <div>
-            <h3>Data Analytics Essentials</h3>
-            <div class="meta">Cisco Networking Academy · Jul 2026</div>
-          </div>
-          <a class="btn proj-link" href="https://drive.google.com/file/d/1PdYVmyZhFUvgaA_Ww2KVjZ7eZtr3SUhj/view?usp=sharing" target="_blank" rel="noopener">
-            View Certificate ↗
-          </a>
-        </div>
-
-        <div class="panel cert-card">
-          <div>
-            <h3>Data Analytics Job Simulation</h3>
-            <div class="meta">Deloitte · Jul 2026</div>
-          </div>
-          <a class="btn proj-link" href="https://drive.google.com/file/d/11qcy3jpOwRAi8R_aVBDfetFDB0GCn1Q4/view?usp=sharing" target="_blank" rel="noopener">
-            View Certificate ↗
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="sec-header">
-        <h2>Education</h2>
+        <a class="btn small-btn" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
+          View in GitHub ↗
+        </a>
       </div>
 
-      <div class="panel">
-        <h3>B.Tech, Computer Science and Data Science</h3>
-        <div class="meta">2022 – 2026 · QIS College of Engineering and Technology, Ongole, Andhra Pradesh</div>
-        <div class="tags">
-          <span class="tag">CGPA: 7.37 / 10</span>
+      <div class="tile proj-tile" data-tools="sql powerbi excel">
+        <h3>HR Analytics</h3>
+        <div class="sub-meta">Workforce & People Intelligence</div>
+        <ul>
+          <li>Processed and analyzed workforce datasets using SQL queries and Excel workbooks.</li>
+          <li>Evaluated employee patterns across departments and organizational records.</li>
+          <li>Created a Power BI dashboard to track HR KPIs and support people decisions.</li>
+        </ul>
+        <div class="pills">
+          <span class="pill">SQL</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Excel</span>
+        </div>
+        <a class="btn small-btn" href="https://github.com/maheshkunchala07" target="_blank" rel="noopener">
+          View in GitHub ↗
+        </a>
+      </div>
+
+      <div class="tile proj-tile soon-tile" data-tools="all">
+        <div class="soon-pill">Next Project</div>
+        <h3>Loading Soon</h3>
+        <p class="soon-note">Another data analytics case study and dashboard is currently in progress.</p>
+        <div class="loader-rail" aria-hidden="true">
+          <div class="loader-bar"></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact">
-      <div class="sec-header">
-        <h2>Contact</h2>
-      </div>
+  <section id="certifications">
+    <div class="sec-bar">
+      <h2>Certifications & <span>Credentials</span></h2>
+    </div>
 
-      <div class="panel">
-        <h3>Open to Data Analyst Opportunities</h3>
-        <div class="meta">Feel free to reach out via email, LinkedIn, WhatsApp, or phone.</div>
-        <div class="tags" style="margin-top:14px;">
-          <a class="btn solid" href="mailto:maheshkunchala50@gmail.com">
-            <svg width="15" height="15" fill="currentColor"><use href="#i-mail"/></svg>
-            Email
-          </a>
-          <a class="btn" href="https://www.linkedin.com/in/mahesh-babu-kunchala-6a1922290" target="_blank" rel="noopener">
-            <svg width="15" height="15" fill="currentColor"><use href="#i-li"/></svg>
-            LinkedIn
-          </a>
-          <a class="btn" href="https://wa.me/917036919344" target="_blank" rel="noopener">
-            <svg width="15" height="15" fill="currentColor"><use href="#i-wa"/></svg>
-            WhatsApp
-          </a>
-          <a class="btn" href="tel:+917036919344">
-            <svg width="15" height="15" fill="currentColor"><use href="#i-ph"/></svg>
-            Call
-          </a>
+    <div class="grid-auto">
+      <div class="tile cert-tile">
+        <div>
+          <h3>Certificate Program in Data Analyst <span class="gold-badge">Gold</span></h3>
+          <div class="sub-meta">IT-ITeS Sector Skills Council NASSCOM · Oct 2026</div>
         </div>
+        <a class="btn small-btn" href="https://drive.google.com/file/d/1vobyl3O1VtlGfaz-EZKEOhrQAjFU2ZZi/view?usp=sharing" target="_blank" rel="noopener">
+          View Certificate ↗
+        </a>
       </div>
-    </section>
-  </main>
+
+      <div class="tile cert-tile">
+        <div>
+          <h3>Data Analytics Essentials</h3>
+          <div class="sub-meta">Cisco Networking Academy · Jul 2026</div>
+        </div>
+        <a class="btn small-btn" href="https://drive.google.com/file/d/1PdYVmyZhFUvgaA_Ww2KVjZ7eZtr3SUhj/view?usp=sharing" target="_blank" rel="noopener">
+          View Certificate ↗
+        </a>
+      </div>
+
+      <div class="tile cert-tile">
+        <div>
+          <h3>Data Analytics Job Simulation</h3>
+          <div class="sub-meta">Deloitte · Jul 2026</div>
+        </div>
+        <a class="btn small-btn" href="https://drive.google.com/file/d/11qcy3jpOwRAi8R_aVBDfetFDB0GCn1Q4/view?usp=sharing" target="_blank" rel="noopener">
+          View Certificate ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-bar">
+      <h2>Education</h2>
+    </div>
+
+    <div class="tile">
+      <h3>B.Tech, Computer Science and Data Science</h3>
+      <div class="sub-meta">2022 – 2026 · QIS College of Engineering and Technology, Ongole, Andhra Pradesh</div>
+      <div class="pills">
+        <span class="pill">CGPA: 7.37 / 10</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="tile contact-tile">
+      <div>
+        <h3>Let’s Connect</h3>
+        <div class="sub-meta" style="margin-bottom:0;">Open to Data Analyst roles · Email, LinkedIn, WhatsApp, or phone</div>
+      </div>
+      <div class="actions" style="margin-top:0;">
+        <a class="btn gold" href="mailto:maheshkunchala50@gmail.com">Email Me</a>
+        <a class="btn" href="https://www.linkedin.com/in/mahesh-babu-kunchala-6a1922290" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://wa.me/917036919344" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </section>
 </div>
 
 <footer>
@@ -952,39 +976,39 @@ footer {
 <script>
 (function () {
   var root = document.documentElement;
-  var btn = document.getElementById("themeToggle");
+  var btn = document.getElementById("modeToggle");
 
-  function syncLabel() {
-    var dark = root.getAttribute("data-theme") === "dark";
-    btn.textContent = dark ? "Light" : "Dark";
+  function syncMode() {
+    var isDark = root.getAttribute("data-theme") === "dark";
+    btn.textContent = isDark ? "Ivory" : "Forest";
   }
 
   try {
-    var saved = localStorage.getItem("editorial-theme");
+    var saved = localStorage.getItem("forest-bento-theme");
     if (saved) root.setAttribute("data-theme", saved);
   } catch (e) {}
 
   btn.onclick = function () {
     var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
-    try { localStorage.setItem("editorial-theme", next); } catch (e) {}
-    syncLabel();
+    try { localStorage.setItem("forest-bento-theme", next); } catch (e) {}
+    syncMode();
   };
-  syncLabel();
+  syncMode();
 
-  var pills = document.querySelectorAll(".f-pill");
-  var cards = document.querySelectorAll("#projList .proj-card");
+  var chips = document.querySelectorAll(".f-chip");
+  var tiles = document.querySelectorAll("#projGrid .proj-tile");
 
-  pills.forEach(function (pill) {
-    pill.addEventListener("click", function () {
-      pills.forEach(function (p) { p.classList.remove("active"); });
-      pill.classList.add("active");
-      var filter = pill.getAttribute("data-filter");
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      chips.forEach(function (c) { c.classList.remove("active"); });
+      chip.classList.add("active");
+      var filter = chip.getAttribute("data-filter");
 
-      cards.forEach(function (card) {
-        var tools = card.getAttribute("data-tools") || "";
-        var match = filter === "all" || tools === "all" || tools.split(" ").indexOf(filter) !== -1;
-        card.classList.toggle("hidden", !match);
+      tiles.forEach(function (tile) {
+        var tools = tile.getAttribute("data-tools") || "";
+        var show = filter === "all" || tools === "all" || tools.split(" ").indexOf(filter) !== -1;
+        tile.classList.toggle("hidden", !show);
       });
     });
   });
